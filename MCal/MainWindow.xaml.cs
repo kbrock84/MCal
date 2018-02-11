@@ -9,12 +9,13 @@ namespace MCal
     /// </summary>
     public partial class MainWindow : IMainWindow
     {
-        CalendarPresenter _presenter = new CalendarPresenter();
+        CalendarPresenter _presenter;
         
         public MainWindow()
         {
             InitializeComponent();
-            _presenter.InitializedCalendar(this, new DateKeeper(), new Calendar(new DateKeeper()));
+            _presenter = new CalendarPresenter(this, new DateKeeper(), new Calendar(new DateKeeper()));
+            _presenter.InitializedCalendar();
 
             NextMonthButton.Click += OnNextMonthButtonClicked;
             LastMonthButton.Click += OnLastMonthButtonClicked;

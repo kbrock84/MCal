@@ -3,6 +3,12 @@ namespace MCal
 {
     public class CalendarPresenter
     {
+        public CalendarPresenter(IMainWindow mainWindow, IDateKeeper dateKeeper, ICalendar calendar)
+        {
+            _mainWindow = mainWindow;
+            _dateKeeper = dateKeeper;
+            _calendar = calendar;
+        }
         
         private IMainWindow _mainWindow;
         private IDateKeeper _dateKeeper;
@@ -12,11 +18,8 @@ namespace MCal
 
         private short _monthIncr = 0;
 
-        public void InitializedCalendar(IMainWindow mainWindow, IDateKeeper dateKeeper, ICalendar calendar)
-        {
-            _mainWindow = mainWindow;
-            _dateKeeper = dateKeeper;
-            _calendar = calendar;
+        public void InitializedCalendar()
+        {   
             PushCalendarToView();
         }
 
