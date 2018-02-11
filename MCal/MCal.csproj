@@ -58,10 +58,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CalendarController.cs" />
+    <Compile Include="CalendarPresenter.cs" />
+    <Compile Include="Calendar.cs" />
+    <Compile Include="BrushMaker.cs" />
     <Compile Include="DateKeeper.cs" />
     <Compile Include="IDateKeeper.cs" />
     <Compile Include="IMainWIndow.cs" />
+    <Compile Include="ICalendar.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

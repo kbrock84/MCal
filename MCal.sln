@@ -1,6 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCal", "MCal\MCal.csproj", "{D4B5F19C-79A2-48AB-920F-678A0A423CCE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D84E4607-B13C-4C64-A97F-3CF2977E957D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +17,11 @@ Global
 		{D4B5F19C-79A2-48AB-920F-678A0A423CCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4B5F19C-79A2-48AB-920F-678A0A423CCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4B5F19C-79A2-48AB-920F-678A0A423CCE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B61D0293-381E-4A4F-BC67-7BA8EBE6D299}
 	EndGlobalSection
 EndGlobal

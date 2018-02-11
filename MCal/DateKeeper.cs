@@ -33,11 +33,6 @@ namespace MCal
         
         public void ResetToFirstDay()
         {
-            if (SwapTime.Day < 28)
-            {
-                SwapTime = SwapTime.AddMonths(-1);
-            }
-
             SwapTime = DateTime.Parse($@"{SwapTime.Month}/1/{SwapTime.Year}");
         }
     }
