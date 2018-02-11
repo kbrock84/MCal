@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace MCal
 {
@@ -71,7 +70,6 @@ namespace MCal
             Label dateNumber = new Label
             {
                 Content = content,
-                HorizontalAlignment = HorizontalAlignment.Right,
                 Foreground = BrushMaker.MakeBrushFromARGB(labelARGB).GetBrush
             };
                         

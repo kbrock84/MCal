@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-
+﻿
 namespace MCal
 {
     public class Calendar : ICalendar
@@ -17,7 +9,7 @@ namespace MCal
 
         IDateKeeper _dateKeeper;
 
-        private const short CalendarDateRowCount = 5;
+        private const short CalendarDateRowCount = 6;
         private const short CalendarDateColumnCount = 7;
 
         public Calendar(IDateKeeper dateKeeper)
@@ -52,12 +44,9 @@ namespace MCal
             "Saturday",
         };
 
-        public int[] MonthDayRGBA { get => new int[] { 255, 0, 0 }; set => throw new NotImplementedException(); }
-        public int[] OutsideOfMonthDayRGBA { get => new int[] { 0, 255, 0 }; set => throw new NotImplementedException(); }
-
         public string[][] LoadCalendar(short monthIncr, IMainWindow _mainWindow)
         {
-            CalendarDays = new string[5][];
+            CalendarDays = new string[CalendarDateRowCount][];
             if (monthIncr != 0)
             {
                 _dateKeeper.AddMonths(monthIncr);

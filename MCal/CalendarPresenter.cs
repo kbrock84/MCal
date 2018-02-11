@@ -14,30 +14,28 @@ namespace MCal
         private IDateKeeper _dateKeeper;
         private ICalendar _calendar;
 
-        private int[] _dayArgb = { 255, 255, 0 , 0};
-
         private short _monthIncr = 0;
 
         public void InitializedCalendar()
         {   
-            PushCalendarToView();
+            PushCalendarToView(new CalendarConfig());
         }
 
         public void LastMonthButtonClicked()
         {
             _mainWindow.ClearCalendarChildren();
             _calendar.LoadCalendar(-1, _mainWindow);
-            PushCalendarToView();
+            PushCalendarToView(new CalendarConfig());
         }
 
         public void NextMonthButtonClicked()
         {
             _mainWindow.ClearCalendarChildren();
             _calendar.LoadCalendar(+1, _mainWindow);
-            PushCalendarToView();
+            PushCalendarToView(new CalendarConfig());
         }
 
-        private void PushCalendarToView()
+        private void PushCalendarToView(CalendarConfig calendarConfig)
         {
             var calDates = _calendar.LoadCalendar(_monthIncr, _mainWindow);
             for (short dayOfWeek = 0; dayOfWeek < _calendar.Weekdays.Length; dayOfWeek++)
@@ -48,6 +46,11 @@ namespace MCal
             {
                 for (short day = 0; day < calDates[0].Length; day++)
                 {
+                    short dayData;
+                    short.TryParse(calDates[week][day], out dayData);
+
+                    var _dayArgb = calendarConfig.GetDayTextARGB(week, dayData);
+
                     _mainWindow.AddLabel(day, week, calDates[week][day], _dayArgb);
                 }
             }

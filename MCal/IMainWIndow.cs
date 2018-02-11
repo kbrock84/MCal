@@ -1,7 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-
+﻿
 namespace MCal
 {
     public interface IMainWindow
