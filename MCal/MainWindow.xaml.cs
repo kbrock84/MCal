@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace MCal
 {
@@ -8,18 +9,19 @@ namespace MCal
     /// </summary>
     public partial class MainWindow : IMainWindow
     {
-        CalendarPresenter _presenter;
+        private readonly CalendarPresenter _presenter;
+        private ICalendarConfig _calendarConfig;
         
         public MainWindow()
         {
             InitializeComponent();
-            _presenter = new CalendarPresenter(this, new DateKeeper(), new Calendar(new DateKeeper()));
+            _presenter = new CalendarPresenter(this, new Calendar(new DateKeeper()));
             _presenter.InitializedCalendar();
 
             NextMonthButton.Click += OnNextMonthButtonClicked;
             LastMonthButton.Click += OnLastMonthButtonClicked;
         }
-
+        
         private void OnLastMonthButtonClicked(object sender, RoutedEventArgs e)
         {
             _presenter.LastMonthButtonClicked();
@@ -30,6 +32,11 @@ namespace MCal
             _presenter.NextMonthButtonClicked();
         }
 
+        public void SetConfiguration(ICalendarConfig calendarConfig)
+        {
+            _calendarConfig = calendarConfig;
+        }
+        
         public void ClearCalendarChildren()
         {
             CalendarGrid.Children.Clear();
@@ -56,27 +63,33 @@ namespace MCal
             MonthLabel.Content = monthText;
         }
         
-        public void AddBorder(short dayOfWeek, short weekOfMonth, int[] backgroundARGB)
+
+        public void AddLabel(short dayOfWeek, short weekOfMonth, string content)
         {
-            Border dayCellBorder = new Border();
-            dayCellBorder.Background = BrushMaker.MakeBrushFromARGB(backgroundARGB).GetBrush;
+            var dayCellBorder = new Border
+            {
+                Background = BrushMaker.MakeBrushFromARGB(_calendarConfig.GetDayBackgroundArgb(weekOfMonth, short.Parse(content))).GetBrush,
+            };
+            dayCellBorder.MouseEnter += (sender, args) =>
+            {
+                dayCellBorder.Background = BrushMaker.MakeBrushFromARGB(_calendarConfig.HighlightArgb).GetBrush;
+            };
+            dayCellBorder.MouseLeave += (sender, args) =>
+            {
+                dayCellBorder.Background = BrushMaker.MakeBrushFromARGB(_calendarConfig.GetDayBackgroundArgb(weekOfMonth, short.Parse(content))).GetBrush;
+            };
+            
             Grid.SetColumn(dayCellBorder, dayOfWeek);
             Grid.SetRow(dayCellBorder, weekOfMonth);
             AddDateChild(dayCellBorder);
-        }
-
-        public void AddLabel(short dayOfWeek, short weekOfMonth, string content, int[] labelARGB)
-        {
-            Label dateNumber = new Label
+            
+            var dateNumber = new Label
             {
                 Content = content,
-                Foreground = BrushMaker.MakeBrushFromARGB(labelARGB).GetBrush
+                Foreground = BrushMaker.MakeBrushFromARGB(_calendarConfig.GetDayTextArgb(weekOfMonth, short.Parse(content))).GetBrush
             };
-                        
-            Grid.SetColumn(dateNumber, dayOfWeek);
-            Grid.SetRow(dateNumber, weekOfMonth);
-            AddDateChild(dateNumber);
-        }
 
+            dayCellBorder.Child = dateNumber;
+        }
     }
 }

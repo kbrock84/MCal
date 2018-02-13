@@ -63,6 +63,7 @@
     <Compile Include="BrushMaker.cs" />
     <Compile Include="CalendarConfig.cs" />
     <Compile Include="DateKeeper.cs" />
+    <Compile Include="ICalendarConfig.cs" />
     <Compile Include="IDateKeeper.cs" />
     <Compile Include="IMainWIndow.cs" />
     <Compile Include="ICalendar.cs" />

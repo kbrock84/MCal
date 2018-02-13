@@ -1,41 +1,26 @@
 ﻿
 namespace MCal
 {
-    class CalendarConfig
+    class CalendarConfig : ICalendarConfig
     {
-        int[] InMonthDaysBackgroundARGB { get; set; }
-        int[] OutOfMonthDaysBackgroundARGB { get; set; }
-        int[] InMonthDaysTextARGB { get; set; }
-        int[] OutOfMonthDaysTextARGB { get; set; }
-
-        public int[] GetDayTextARGB(short week, short day)
+        public int[] InMonthDaysBackgroundArgb { get; set; }
+        public int[] OutOfMonthDaysBackgroundArgb { get; set; }
+        public int[] InMonthDaysTextArgb { get; set; }
+        public int[] OutOfMonthDaysTextArgb { get; set; }
+        public int[] HighlightArgb { get; set; }
+        
+        public int[] GetDayTextArgb(short week, short day)
         {
-            if (DayIsPartOfCurrentMonth(week, day))
-            {
-                return new int[] { 255, 0, 255, 0 };
-            }
-            else return new int[] { 255, 255, 0, 0 };
+            return DayIsPartOfCurrentMonth(week, day) ? InMonthDaysTextArgb : OutOfMonthDaysTextArgb;
         }
-        public int[] GetDayBackgroundARGB(short week, short day)
+        public int[] GetDayBackgroundArgb(short week, short day)
         {
-            if (DayIsPartOfCurrentMonth(week, day))
-            {
-                return new int[] { 100, 0, 0, 255 };
-            }
-            else return new int[] { 100, 0, 255, 0 };
+            return DayIsPartOfCurrentMonth(week, day) ? InMonthDaysBackgroundArgb : OutOfMonthDaysBackgroundArgb;
         }
 
         public bool DayIsPartOfCurrentMonth(short week, short day)
         {
-            if (week == 0 && day > 7)
-            {
-                return false;
-            }
-            else if (week >= 4 && day < 21)
-            {
-                return false;
-            }
-            return true;
+            return !((week == 0 && day > 7) || (week >= 4 && day < 21));
         }
     }
 }

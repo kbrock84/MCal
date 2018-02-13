@@ -7,6 +7,30 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     
+    <Window.Resources>
+        <Style x:Key="CalNavButtonStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="15" 
+                                Background="White" BorderBrush="#ccc" 
+                                BorderThickness="1,1,1,1" 
+                                Height="30" 
+                                Width="30"
+                                VerticalAlignment="Center">
+                            <ContentPresenter x:Name="contentPresenter" 
+                                              ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                              Content="{TemplateBinding Content}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              Margin="{TemplateBinding Padding}" 
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    
     <Grid Name="BaseGrid" Height="Auto">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -14,13 +38,13 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Name="LastMonthButton" Content="Last Month"/>
+                <Button Name="LastMonthButton" Content="&lt;" Style="{StaticResource CalNavButtonStyle}"/>
                 <Label Name="MonthLabel" HorizontalAlignment="Center" 
                        MinWidth="200" 
                        FontSize="20" 
                        FontWeight="Bold" 
                        HorizontalContentAlignment="Center"/>
-                <Button Name="NextMonthButton" Content="Next Month"/>
+                <Button Name="NextMonthButton" Content="&gt;" Style="{StaticResource CalNavButtonStyle}"/>
             </StackPanel>
             <Grid Grid.Row="1" Name="DayLabelGrid">
                 <Grid.ColumnDefinitions>
