@@ -1,5 +1,5 @@
 ﻿
-namespace MCal
+namespace MCal.CalendarUI
 {
     class CalendarConfig : ICalendarConfig
     {

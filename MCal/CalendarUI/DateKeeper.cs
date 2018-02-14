@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MCal
+namespace MCal.CalendarUI
 {
     public class DateKeeper : IDateKeeper
     {

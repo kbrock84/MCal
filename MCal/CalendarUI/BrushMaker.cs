@@ -1,6 +1,6 @@
 ﻿using System.Windows.Media;
 
-namespace MCal
+namespace MCal.CalendarUI
 {
     class BrushMaker
     {

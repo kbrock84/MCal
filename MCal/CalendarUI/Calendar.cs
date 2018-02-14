@@ -1,7 +1,7 @@
 ﻿
 using System.Dynamic;
 
-namespace MCal
+namespace MCal.CalendarUI
 {
     public class Calendar : ICalendar
     {

@@ -1,5 +1,5 @@
 ﻿
-namespace MCal
+namespace MCal.CalendarUI
 {
     public class CalendarPresenter
     {
@@ -28,24 +28,24 @@ namespace MCal
                 HighlightArgb = new[] {175, 5, 75, 237}
             };
             _mainWindow.SetConfiguration(_config);
-            PushCalendarToView(_config);
+            PushCalendarToView();
         }
 
         public void LastMonthButtonClicked()
         {
             _mainWindow.ClearCalendarChildren();
             _calDates = _calendar.LoadCalendar(-1);
-            PushCalendarToView(_config);
+            PushCalendarToView();
         }
 
         public void NextMonthButtonClicked()
         {
             _mainWindow.ClearCalendarChildren();
             _calDates = _calendar.LoadCalendar(1);
-            PushCalendarToView(_config);
+            PushCalendarToView();
         }
 
-        private void PushCalendarToView(ICalendarConfig calendarConfig)
+        private void PushCalendarToView()
         {
             for (short dayOfWeek = 0; dayOfWeek < _calendar.Weekdays.Length; dayOfWeek++)
             {
@@ -55,15 +55,9 @@ namespace MCal
             {
                 for (short day = 0; day < _calDates[0].Length; day++)
                 {
-                    short.TryParse(_calDates[week][day], out var dayData);
-                    var dayArgb = calendarConfig.GetDayTextArgb(week, dayData);
-                    var bgArgb = calendarConfig.GetDayBackgroundArgb(week, dayData);
-                    var hlArgb = calendarConfig.HighlightArgb;
-                    //_mainWindow.AddBorder(day, week, bgArgb);
                     _mainWindow.AddLabel(day, week, _calDates[week][day]);
                 }
             }
-            
             _mainWindow.SetMonthLabelText(_calendar.Month);
         }
     }

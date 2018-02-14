@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace MCal
+namespace MCal.CalendarUI
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

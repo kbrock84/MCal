@@ -46,28 +46,20 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="App.xaml.cs">
+    <Compile Include="CalendarUI\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CalendarPresenter.cs" />
-    <Compile Include="Calendar.cs" />
-    <Compile Include="BrushMaker.cs" />
-    <Compile Include="CalendarConfig.cs" />
-    <Compile Include="DateKeeper.cs" />
-    <Compile Include="ICalendarConfig.cs" />
-    <Compile Include="IDateKeeper.cs" />
-    <Compile Include="IMainWIndow.cs" />
-    <Compile Include="ICalendar.cs" />
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="CalendarUI\BrushMaker.cs" />
+    <Compile Include="CalendarUI\Calendar.cs" />
+    <Compile Include="CalendarUI\CalendarConfig.cs" />
+    <Compile Include="CalendarUI\CalendarPresenter.cs" />
+    <Compile Include="CalendarUI\DateKeeper.cs" />
+    <Compile Include="CalendarUI\ICalendar.cs" />
+    <Compile Include="CalendarUI\ICalendarConfig.cs" />
+    <Compile Include="CalendarUI\IDateKeeper.cs" />
+    <Compile Include="CalendarUI\IMainWIndow.cs" />
+    <Compile Include="CalendarUI\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -88,6 +80,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="CalendarUI\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="CalendarUI\App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
